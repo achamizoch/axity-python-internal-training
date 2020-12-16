@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  test-postgres:
+    image: postgres #:9.5.0
+    ports: 
+      - 5432:5432
+    environment: 
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "Welcome1"
+    networks:
+      - test-pg-compose-network
+ 
+  test-pgadmin:
+    image: dpage/pgadmin4
+    ports: 
+      - 5555:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@axity.com"
+      PGADMIN_DEFAULT_PASSWORD: "Welcome1"
+    depends_on:
+      - test-postgres
+    networks:
+      - test-pg-compose-network
+
+networks: 
+  test-pg-compose-network:
+    driver: bridge
+
+
+# Create docker container for pgAdmin
+# docker run -p 5555:80 `
+#            --name test-pgadmin `
+#            -e 'PGADMIN_DEFAULT_EMAIL=admin@axity.com' `
+#            -e 'PGADMIN_DEFAULT_PASSWORD=Welcome1' `
+#            -d dpage/pgadmin4
+
+# Create docker container for Postgres
+# docker run --name test-postgres -p 5432:5432 -e POSTGRES_PASSWORD=Welcome1 -d postgres
