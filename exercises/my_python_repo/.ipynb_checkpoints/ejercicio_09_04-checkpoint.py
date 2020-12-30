@@ -2,11 +2,7 @@
 def crea_diccionario(archivo):
     diccionario_flores = {}
 
-    with open(archivo, 'r') as f:
-        for line in f.readlines():
-            key, value = line.split(':')
-            value = value.rstrip()
-            diccionario_flores[key.lower()] = value
+    # agregue su código aquí
 
     return diccionario_flores
 
@@ -14,7 +10,7 @@ def crea_diccionario(archivo):
 # No modificar este bloque del código
 # Ajustar solo la ruta del archivo si es necesario
 def main():
-    d_flores = crea_diccionario('data_files/flowers.txt')
+    d_flores = crea_diccionario('datafiles/flowers.txt')
     nombre_completo = input("Capture solo su Nombre [espacio] Apellido: ")
     nombre = nombre_completo[0].lower()
     letra = nombre[0]

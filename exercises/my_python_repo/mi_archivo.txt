@@ -1,0 +1,3 @@
+My nombre es Alexander
+Estoy en el curso de Python
+Es el día 2
